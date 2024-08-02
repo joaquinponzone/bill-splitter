@@ -50,7 +50,10 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-0 md:p-12 xl:p-24">
       <section className="flex flex-col md:flex-row flex-grow w-full gap-2">
         <PeopleList handleSyncPeople={handleSyncPeople} />
-        <BillsList handleSyncBills={handleSyncBills} />
+        <BillsList
+          people={dataToSplit.people}
+          handleSyncBills={handleSyncBills}
+        />
         <Results data={dataToSplit} handleResetState={handleResetState} />
       </section>
       <section className="p-4">

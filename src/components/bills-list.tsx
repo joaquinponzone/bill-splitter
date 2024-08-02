@@ -17,8 +17,10 @@ import { useToast } from "./ui/use-toast";
 import { formatCurrency } from "@/lib/utils";
 
 export default function BillsList({
+  people,
   handleSyncBills,
 }: {
+  people: string[];
   handleSyncBills: (bills: any[]) => void;
 }) {
   const { toast } = useToast();
@@ -62,10 +64,10 @@ export default function BillsList({
     }
 
     // check if the newBill.person exists in the list
-    const calidatePersonExists = bills.find(
-      (bill) => bill.person === newBill.person
+    const validatePersonExist = people.find(
+      (person) => person === newBill.person
     );
-    if (!calidatePersonExists) {
+    if (!validatePersonExist) {
       toast({
         title: "Persona no encontrada!",
         description:
