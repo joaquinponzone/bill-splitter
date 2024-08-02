@@ -38,7 +38,7 @@ export default function Results({
   }, [data.bills, data.people]);
 
   return (
-    <Card className="w-full lg:max-w-[30%]">
+    <Card className="w-full lg:max-w-[33%]">
       <CardHeader className="flex flex-row items-center">
         <CardTitle>Resultados</CardTitle>
       </CardHeader>

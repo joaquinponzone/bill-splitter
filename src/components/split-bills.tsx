@@ -7,45 +7,37 @@ import { Separator } from "./ui/separator";
 
 export default function SplitBills({ results }: { results: SplitBill | null }) {
   return (
-    <section className="grid gap-4 w-full">
-      {/* <Button size={"lg"} className="w-full" onClick={handleSplit}>
-            Split
-          </Button> */}
-
-      {results && (
-        <Card className="grid gap-3 w-full justify-center">
-          <CardHeader>
-            <CardTitle className="text-center">Ajustes</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul className="grid gap-3">
-              {results.transactions.map((transaction, index) => (
-                <>
-                  <li
-                    key={transaction.from + transaction.to + index}
-                    className="flex items-center justify-between gap-2"
-                  >
-                    <Badge variant={"outline"} className="text-lg">
-                      {transaction.from}
-                    </Badge>
-                    <span>👉</span>
-                    <Badge variant={"outline"} className="text-lg">
-                      {transaction.to}
-                    </Badge>
-                    <span>💸</span>
-                    <Badge variant={"secondary"} className="text-lg">
-                      {formatCurrency(Number(transaction.amount.toFixed(2)))}
-                    </Badge>
-                  </li>
-                  {index !== results.transactions.length - 1 && (
-                    <Separator className="my-2" />
-                  )}
-                </>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
-      )}
-    </section>
+    <Card className="grid gap-3 justify-center ">
+      <CardHeader>
+        <CardTitle className="text-center">Ajustes</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <ul className="grid gap-3">
+          {results?.transactions.map((transaction, index) => (
+            <>
+              <li
+                key={transaction.from + transaction.to + index}
+                className="flex items-center justify-between gap-2"
+              >
+                <Badge variant={"outline"} className="text-lg">
+                  {transaction.from}
+                </Badge>
+                <span>👉</span>
+                <Badge variant={"outline"} className="text-lg">
+                  {transaction.to}
+                </Badge>
+                <span>💸</span>
+                <Badge variant={"secondary"} className="text-lg">
+                  {formatCurrency(Number(transaction.amount.toFixed(2)))}
+                </Badge>
+              </li>
+              {index !== results.transactions.length - 1 && (
+                <Separator className="my-2" />
+              )}
+            </>
+          ))}
+        </ul>
+      </CardContent>
+    </Card>
   );
 }
