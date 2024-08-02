@@ -1,7 +1,6 @@
 "use client";
 
 import { PlusIcon, XIcon } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -13,7 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Input } from "./ui/input";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -23,12 +22,15 @@ export default function PeopleList({
   handleSyncPeople: (people: string[]) => void;
 }) {
   const { toast } = useToast();
-  const peopleStore = localStorage.getItem("people");
 
-  const [people, setPeople] = useState<string[]>([
-    ...(peopleStore ? JSON.parse(peopleStore) : []),
-  ]);
+  const [people, setPeople] = useState<string[]>([]);
   const [newPerson, setNewPerson] = useState<string>("");
+
+  // Use useEffect to safely access localStorage on the client side
+  useEffect(() => {
+    const peopleStore = localStorage.getItem("people");
+    setPeople(peopleStore ? JSON.parse(peopleStore) : []);
+  }, []);
 
   function handleAddPerson(event: React.FormEvent) {
     event.preventDefault();

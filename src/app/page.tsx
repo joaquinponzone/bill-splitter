@@ -1,40 +1,48 @@
 "use client";
+
 import BillsList from "@/components/bills-list";
 import PeopleList from "@/components/people-list";
 import Results from "@/components/results";
-import { Button } from "@/components/ui/button";
 import { Bill, DataToSplit } from "@/lib/types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
-  const peopleStore = localStorage.getItem("people");
-  const billsStore = localStorage.getItem("bills");
-
   const [dataToSplit, setDataToSplit] = useState<DataToSplit>({
-    people: peopleStore ? JSON.parse(peopleStore) : [],
-    bills: billsStore ? JSON.parse(billsStore) : [],
+    people: [],
+    bills: [],
   });
+
+  // Use useEffect to safely access localStorage on the client side
+  useEffect(() => {
+    const peopleStore = window.localStorage.getItem("people");
+    const billsStore = window.localStorage.getItem("bills");
+
+    setDataToSplit({
+      people: peopleStore ? JSON.parse(peopleStore) : [],
+      bills: billsStore ? JSON.parse(billsStore) : [],
+    });
+  }, []);
 
   function handleSyncPeople(people: string[]) {
     setDataToSplit((prev: DataToSplit) => ({ ...prev, people }));
 
-    // store in local storage
-    localStorage.setItem("people", JSON.stringify(people));
+    // Store in local storage
+    window.localStorage.setItem("people", JSON.stringify(people));
   }
 
   function handleSyncBills(bills: Bill[]) {
     setDataToSplit((prev: DataToSplit) => ({ ...prev, bills }));
 
-    // store in local storage
-    localStorage.setItem("bills", JSON.stringify(bills));
+    // Store in local storage
+    window.localStorage.setItem("bills", JSON.stringify(bills));
   }
 
   function handleResetState() {
     setDataToSplit({ people: [], bills: [] });
 
-    // clear local storage
-    localStorage.removeItem("people");
-    localStorage.removeItem("bills");
+    // Clear local storage
+    window.localStorage.removeItem("people");
+    window.localStorage.removeItem("bills");
   }
 
   return (

@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Table,
   TableBody,
@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/table";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-
 import { PlusIcon, XIcon } from "lucide-react";
 import { useToast } from "./ui/use-toast";
 
@@ -23,14 +22,13 @@ export default function BillsList({
   handleSyncBills: (bills: any[]) => void;
 }) {
   const { toast } = useToast();
-  const billsStore = localStorage.getItem("bills");
   const [bills, setBills] = useState<
     {
       person: string;
       amount: number;
       detail: string;
     }[]
-  >([...(billsStore ? JSON.parse(billsStore) : [])]);
+  >([]);
   const [newBill, setNewBill] = useState<{
     person: string;
     amount: string;
@@ -40,6 +38,12 @@ export default function BillsList({
     amount: "",
     detail: "",
   });
+
+  // Use useEffect to safely access localStorage on the client side
+  useEffect(() => {
+    const billsStore = localStorage.getItem("bills");
+    setBills(billsStore ? JSON.parse(billsStore) : []);
+  }, []);
 
   const handleAddBill = (event: React.FormEvent) => {
     event.preventDefault();
