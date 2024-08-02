@@ -4,6 +4,7 @@ import BillsList from "@/components/bills-list";
 import PeopleList from "@/components/people-list";
 import Results from "@/components/results";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { Bill, DataToSplit } from "@/lib/types";
 import { useState, useEffect } from "react";
 
@@ -66,6 +67,21 @@ export default function Home() {
           Reiniciar cuenta 🗑️
         </Button>
       </section>
+      {/* copyright footer */}
+      <Separator className="my-4 w-1/2" />
+      <footer className="p-4 text-center text-sm text-gray-500">
+        <p>
+          Hecho con ♥️ por{" "}
+          <a
+            href="https://github.com/joaquinponzone"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500"
+          >
+            @joaquinponzone
+          </a>
+        </p>
+      </footer>
     </main>
   );
 }

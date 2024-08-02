@@ -83,9 +83,15 @@ export default function BillsList({
       detail: newBill.detail,
     };
     const newList = [...bills, payload];
-
     setBills(newList);
     handleSyncBills(newList);
+
+    // reset form
+    setNewBill({
+      person: "",
+      amount: "",
+      detail: "",
+    });
   };
 
   function removeBill(bill: any) {
