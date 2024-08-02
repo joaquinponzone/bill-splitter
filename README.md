@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Bill Splitter
 
-## Getting Started
+This project is a simple and efficient bill-splitting application that helps you and your friends easily share expenses. Whether you're sharing dinner, planning a trip, or managing household bills, this app ensures everyone pays their fair share.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Add Expenses:** Quickly add expenses with details like description, amount, and participants.
+- **Automatic Calculations:** Automatically calculates each person's share based on the expenses added.
+- **Expense Tracking:** View a list of all expenses and track who paid for what.
+- **Balance Summary:** Get a summary of how much each person owes or is owed.
+- **Simple UI:** User-friendly interface that makes it easy to manage and split bills.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To run this project locally, follow these steps:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1.  **Clone the repository:**
 
-## Learn More
+    git clone https://github.com/joaquinponzone/bill-splitter.git
 
-To learn more about Next.js, take a look at the following resources:
+2.  **Navigate to the project directory:**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    cd bill-splitter
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3.  **Install dependencies:**
 
-## Deploy on Vercel
+    pnpm install
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4.  **Start the application:**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+        pnpm dev
+
+    This will run the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+## Usage
+
+1. **Add an Expense:** Click on "Add Expense" and fill in the details such as description, amount, and select the participants involved in the expense.
+2. **View Balances:** Go to the "Balances" section to see how much each person owes or is owed. The app calculates this automatically based on the expenses added.
+
+3. **Delete Expenses:** If needed, you can delete and re-enter any expense from the list to adjust calculations.
+
+## Contributing
+
+Contributions are welcome! If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
+
+1. Fork the project.
+2. Create your feature branch: git checkout -b my-feature
+3. Commit your changes: git commit -m 'Add some feature'
+4. Push to the branch: git push origin my-feature
+5. Open a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+If you have any questions or feedback, feel free to contact me at [ponzonejoaquin@gmail.com](mailto:ponzonejoaquin@gmail.com).
