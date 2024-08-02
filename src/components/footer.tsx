@@ -4,7 +4,7 @@ import { Separator } from "./ui/separator";
 export default function Footer() {
   return (
     <>
-      <Separator className="my-4 w-1/2" />
+      <Separator className="my-1 w-1/2" />
       <footer className="p-4 text-center text-sm text-gray-500">
         <p>
           Hecho con ♥️ por{" "}
