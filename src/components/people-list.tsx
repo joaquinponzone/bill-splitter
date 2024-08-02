@@ -62,22 +62,25 @@ export default function PeopleList({
   }
 
   return (
-    <Card className="xl:col-span-2 w-full max-w-[25%]">
+    <Card className="w-full lg:max-w-[25%]">
       <CardHeader className="flex flex-row items-center">
         <CardTitle>Gentes</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="grid gap-2">
-          <form className="flex gap-3" onSubmit={handleAddPerson}>
+          <form
+            className="flex flex-col lg:flex-row gap-3"
+            onSubmit={handleAddPerson}
+          >
             <Input
-              placeholder="Nombre"
+              placeholder="Agrega nueva gente"
               id="name"
               name="name"
               value={newPerson}
-              onChange={handleInputChange} // Update the input value on change
+              onChange={handleInputChange}
             />
-            <Button className="gap-1" type="submit">
-              Agregar persona
+            <Button className="gap-1 w-full lg:w-fit" type="submit">
+              <p className="lg:hidden ">Agregar</p>
               <PlusIcon className="h-4 w-4" />
             </Button>
           </form>
@@ -85,7 +88,7 @@ export default function PeopleList({
             <TableCaption>Lista de gente para repartir</TableCaption>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-[100px]">📋</TableHead>
+                {/* <TableHead className="w-[100px]">📋</TableHead> */}
               </TableRow>
             </TableHeader>
             <TableBody>

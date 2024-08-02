@@ -13,8 +13,7 @@ import { Button } from "./ui/button";
 import { splitBill } from "@/lib/actions";
 import { useEffect, useState } from "react";
 import { Separator } from "./ui/separator";
-import { Badge } from "./ui/badge";
-import { formatCurrency } from "@/lib/utils";
+import SplitBills from "./split-bills";
 
 export default function Results({
   data,
@@ -39,62 +38,20 @@ export default function Results({
   }, [data.bills, data.people]);
 
   return (
-    <Card className="xl:col-span-2 w-full max-w-[30%]">
+    <Card className="w-full lg:max-w-[30%]">
       <CardHeader className="flex flex-row items-center">
         <CardTitle>Resultados</CardTitle>
       </CardHeader>
       <CardContent>
         <TotalBills data={data} />
         <Separator className="my-4" />
-        <section className="grid gap-4 w-full">
-          {/* <Button size={"lg"} className="w-full" onClick={handleSplit}>
-            Split
-          </Button> */}
-
-          {results && (
-            <Card className="grid gap-3 w-full justify-center">
-              <CardHeader>
-                <CardTitle className="text-center">Ajustes</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="grid gap-3">
-                  {results.transactions.map((transaction, index) => (
-                    <>
-                      <li
-                        key={transaction.from + transaction.to + index}
-                        className="flex items-center justify-between gap-2"
-                      >
-                        <Badge variant={"outline"} className="text-lg">
-                          {transaction.from}
-                        </Badge>
-                        <span>👉</span>
-                        <Badge variant={"outline"} className="text-lg">
-                          {transaction.to}
-                        </Badge>
-                        <span>💸</span>
-                        <Badge variant={"secondary"} className="text-lg">
-                          $
-                          {formatCurrency(
-                            Number(transaction.amount.toFixed(2))
-                          )}
-                        </Badge>
-                      </li>
-                      {index !== results.transactions.length - 1 && (
-                        <Separator className="my-2" />
-                      )}
-                    </>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          )}
-        </section>
+        <SplitBills results={results} />
       </CardContent>
 
       <CardFooter>
-        <Button size={"lg"} className="w-full" onClick={handleResetState}>
+        {/* <Button size={"lg"} className="w-full" onClick={handleResetState}>
           Reiniciar cuenta 🗑️
-        </Button>
+        </Button> */}
       </CardFooter>
     </Card>
   );

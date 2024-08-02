@@ -22,12 +22,12 @@ export default function TotalBills({ data }: { data: any }) {
       <Card>
         <CardHeader className="pb-2">
           <CardDescription>Total</CardDescription>
-          <CardTitle className="text-4xl">${formatCurrency(total)}</CardTitle>
+          <CardTitle className="text-4xl">{formatCurrency(total)}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-sm text-muted-foreground">
             <span className="font-bold text-neutral-300">
-              ${formatCurrency(totalPerPerson)}
+              {formatCurrency(totalPerPerson)}
             </span>{" "}
             por persona
           </div>
@@ -37,7 +37,7 @@ export default function TotalBills({ data }: { data: any }) {
         <CardHeader className="pb-2">
           <CardDescription>Per person</CardDescription>
           <CardTitle className="text-4xl">
-            ${formatCurrency(totalPerPerson)}
+            {formatCurrency(totalPerPerson)}
           </CardTitle>
         </CardHeader>
         <CardContent>

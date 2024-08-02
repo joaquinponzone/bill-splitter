@@ -3,6 +3,7 @@
 import BillsList from "@/components/bills-list";
 import PeopleList from "@/components/people-list";
 import Results from "@/components/results";
+import { Button } from "@/components/ui/button";
 import { Bill, DataToSplit } from "@/lib/types";
 import { useState, useEffect } from "react";
 
@@ -51,6 +52,16 @@ export default function Home() {
         <PeopleList handleSyncPeople={handleSyncPeople} />
         <BillsList handleSyncBills={handleSyncBills} />
         <Results data={dataToSplit} handleResetState={handleResetState} />
+      </section>
+      <section className="p-4">
+        <Button
+          size={"lg"}
+          className="w-full"
+          onClick={handleResetState}
+          variant={"secondary"}
+        >
+          Reiniciar cuenta 🗑️
+        </Button>
       </section>
     </main>
   );

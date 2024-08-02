@@ -6,5 +6,5 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatCurrency(amount: number) {
-  return Intl.NumberFormat().format(amount);
+  return `$${Intl.NumberFormat().format(amount)}`;
 }

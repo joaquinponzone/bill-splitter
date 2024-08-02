@@ -7,7 +7,6 @@ import {
   TableBody,
   TableCaption,
   TableCell,
-  TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
@@ -15,6 +14,7 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { PlusIcon, XIcon } from "lucide-react";
 import { useToast } from "./ui/use-toast";
+import { formatCurrency } from "@/lib/utils";
 
 export default function BillsList({
   handleSyncBills,
@@ -60,6 +60,21 @@ export default function BillsList({
       });
       return;
     }
+
+    // check if the newBill.person exists in the list
+    const calidatePersonExists = bills.find(
+      (bill) => bill.person === newBill.person
+    );
+    if (!calidatePersonExists) {
+      toast({
+        title: "Persona no encontrada!",
+        description:
+          "La persona que ingresaste no existe en la lista de gentes.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     const payload = {
       person: newBill.person,
       amount: Number(newBill.amount),
@@ -90,14 +105,16 @@ export default function BillsList({
       <CardHeader>
         <CardTitle>Gastos</CardTitle>
       </CardHeader>
-      <form className="grid grid-cols-4 gap-3 px-4" onSubmit={handleAddBill}>
+      <form
+        className="flex flex-col lg:flex-row gap-3 px-4"
+        onSubmit={handleAddBill}
+      >
         <Input
           placeholder="Persona"
           id="person"
           name="person"
           value={newBill.person}
           onChange={handleChangeInput}
-          className="flex-1"
         />
         <Input
           placeholder="Gasto"
@@ -105,7 +122,6 @@ export default function BillsList({
           name="detail"
           value={newBill.detail}
           onChange={handleChangeInput}
-          className="flex-1"
         />
         <Input
           placeholder="Monto"
@@ -113,10 +129,9 @@ export default function BillsList({
           name="amount"
           value={newBill.amount}
           onChange={handleChangeInput}
-          className="flex-2"
         />
-        <Button className="ml-auto gap-1 w-full flex-2" type="submit">
-          Agregar gasto
+        <Button className="gap-1 w-full lg:w-fit" type="submit">
+          <p className="lg:hidden ">Agregar gasto</p>
           <PlusIcon className="h-4 w-4" />
         </Button>
       </form>
@@ -126,9 +141,9 @@ export default function BillsList({
             <TableCaption>Listado de gastos a dividir.</TableCaption>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-[100px]">Persona</TableHead>
+                {/* <TableHead className="w-[100px]">Persona</TableHead>
                 <TableHead>Detalle</TableHead>
-                <TableHead className="text-right">Monto</TableHead>
+                <TableHead className="text-right">Monto</TableHead> */}
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -136,7 +151,9 @@ export default function BillsList({
                 <TableRow key={bill.person + index}>
                   <TableCell className="font-medium">{bill.person}</TableCell>
                   <TableCell>{bill.detail}</TableCell>
-                  <TableCell className="text-right">{bill.amount}</TableCell>
+                  <TableCell className="text-right">
+                    {formatCurrency(bill.amount)}
+                  </TableCell>
                   <TableCell className="text-right">
                     <form onSubmit={() => removeBill(bill)}>
                       <Button
