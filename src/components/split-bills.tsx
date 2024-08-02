@@ -7,7 +7,7 @@ import { Separator } from "./ui/separator";
 
 export default function SplitBills({ results }: { results: SplitBill | null }) {
   return (
-    <Card className="grid gap-3 justify-center ">
+    <Card className="grid gap-3 justify-center p-0">
       <CardHeader>
         <CardTitle className="text-center">Ajustes</CardTitle>
       </CardHeader>
