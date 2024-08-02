@@ -85,7 +85,7 @@ export default function PeopleList({
             </Button>
           </form>
           <Table>
-            <TableCaption>Lista de gente para repartir</TableCaption>
+            <TableCaption>Lista de gente para dividir</TableCaption>
             <TableHeader>
               <TableRow>
                 {/* <TableHead className="w-[100px]">📋</TableHead> */}
