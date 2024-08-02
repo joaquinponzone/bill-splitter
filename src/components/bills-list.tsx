@@ -144,7 +144,7 @@ export default function BillsList({
         </Button>
       </form>
       <CardContent className="grid gap-8">
-        <div className="grid gap-2 p-2">
+        <div className="grid gap-2 p-0">
           <Table>
             <TableCaption>Listado de gastos a dividir.</TableCaption>
             <TableHeader>
@@ -162,7 +162,7 @@ export default function BillsList({
                   <TableCell className="text-right">
                     {formatCurrency(bill.amount)}
                   </TableCell>
-                  <TableCell className="text-right">
+                  <TableCell className="text-right pr-0">
                     <form onSubmit={() => removeBill(bill)}>
                       <Button
                         variant={"outline"}
