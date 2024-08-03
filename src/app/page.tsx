@@ -3,8 +3,8 @@
 import BillsList from "@/components/bills-list";
 import Footer from "@/components/footer";
 import PeopleList from "@/components/people-list";
+import { ResetSheet } from "@/components/reset-sheet";
 import Results from "@/components/results";
-import { Button } from "@/components/ui/button";
 import { Bill, DataToSplit } from "@/lib/types";
 import { useState, useEffect } from "react";
 
@@ -14,7 +14,6 @@ export default function Home() {
     bills: [],
   });
 
-  // Use useEffect to safely access localStorage on the client side
   useEffect(() => {
     const peopleStore = window.localStorage.getItem("people");
     const billsStore = window.localStorage.getItem("bills");
@@ -45,6 +44,7 @@ export default function Home() {
     // Clear local storage
     window.localStorage.removeItem("people");
     window.localStorage.removeItem("bills");
+    window.location.reload();
   }
 
   return (
@@ -55,17 +55,10 @@ export default function Home() {
           people={dataToSplit.people}
           handleSyncBills={handleSyncBills}
         />
-        <Results data={dataToSplit} handleResetState={handleResetState} />
+        <Results data={dataToSplit} />
       </section>
       <section className="p-4">
-        <Button
-          size={"lg"}
-          className="w-full"
-          onClick={handleResetState}
-          variant={"secondary"}
-        >
-          Reiniciar cuenta 🗑️
-        </Button>
+        <ResetSheet handleResetState={handleResetState} />
       </section>
       <Footer />
     </main>

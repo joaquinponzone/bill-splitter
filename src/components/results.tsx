@@ -17,13 +17,11 @@ import SplitBills from "./split-bills";
 
 export default function Results({
   data,
-  handleResetState,
 }: {
   data: {
     people: string[];
     bills: Bill[];
   };
-  handleResetState: () => void;
 }) {
   const [results, setResults] = useState<null | SplitBill>(null);
 
@@ -44,15 +42,11 @@ export default function Results({
       </CardHeader>
       <CardContent>
         <TotalBills data={data} />
-        <Separator className="my-4" />
-        <SplitBills results={results} />
+        {results ? <Separator className="my-4" /> : null}
+        {results ? <SplitBills results={results} /> : null}
       </CardContent>
 
-      <CardFooter>
-        {/* <Button size={"lg"} className="w-full" onClick={handleResetState}>
-          Reiniciar cuenta 🗑️
-        </Button> */}
-      </CardFooter>
+      <CardFooter></CardFooter>
     </Card>
   );
 }
