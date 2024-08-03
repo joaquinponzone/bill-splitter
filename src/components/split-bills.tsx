@@ -1,5 +1,5 @@
 import { SplitBill } from "@/lib/types";
-import React from "react";
+import React, { Fragment } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { formatCurrency } from "@/lib/utils";
@@ -14,7 +14,7 @@ export default function SplitBills({ results }: { results: SplitBill | null }) {
       <CardContent>
         <ul className="grid gap-3">
           {results?.transactions.map((transaction, index) => (
-            <>
+            <Fragment key={`${transaction.from}-${transaction.to}-${index}`}>
               <li
                 key={transaction.from + transaction.to + index}
                 className="flex items-center justify-between gap-2"
@@ -34,7 +34,7 @@ export default function SplitBills({ results }: { results: SplitBill | null }) {
               {index !== results.transactions.length - 1 && (
                 <Separator className="my-2" />
               )}
-            </>
+            </Fragment>
           ))}
         </ul>
       </CardContent>

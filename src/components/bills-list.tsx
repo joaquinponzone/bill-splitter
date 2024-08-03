@@ -15,6 +15,7 @@ import { Button } from "./ui/button";
 import { PlusIcon, XIcon } from "lucide-react";
 import { useToast } from "./ui/use-toast";
 import { formatCurrency } from "@/lib/utils";
+import { Separator } from "./ui/separator";
 
 export default function BillsList({
   people,
@@ -143,42 +144,40 @@ export default function BillsList({
           <PlusIcon className="h-4 w-4" />
         </Button>
       </form>
-      <CardContent className="grid gap-8">
-        <div className="grid gap-2 p-0">
-          <Table>
-            <TableCaption>Listado de gastos a dividir.</TableCaption>
-            <TableHeader>
-              <TableRow>
-                {/* <TableHead className="w-[100px]">Persona</TableHead>
+      <CardContent className="grid gap-8 py-4 lg:py-2">
+        <Table>
+          <TableCaption>Listado de gastos a dividir.</TableCaption>
+          <TableHeader>
+            <TableRow>
+              {/* <TableHead className="w-[100px]">Persona</TableHead>
                 <TableHead>Detalle</TableHead>
                 <TableHead className="text-right">Monto</TableHead> */}
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {bills.map((bill, index) => (
+              <TableRow key={bill.person + index}>
+                <TableCell className="font-medium">{bill.person}</TableCell>
+                <TableCell>{bill.detail}</TableCell>
+                <TableCell className="text-right">
+                  {formatCurrency(bill.amount)}
+                </TableCell>
+                <TableCell className="text-right pr-0">
+                  <form onSubmit={() => removeBill(bill)}>
+                    <Button
+                      variant={"outline"}
+                      size="icon"
+                      className="gap-1 hover:text-red-500"
+                      type="submit"
+                    >
+                      <XIcon className="h-4 w-4" />
+                    </Button>
+                  </form>
+                </TableCell>
               </TableRow>
-            </TableHeader>
-            <TableBody>
-              {bills.map((bill, index) => (
-                <TableRow key={bill.person + index}>
-                  <TableCell className="font-medium">{bill.person}</TableCell>
-                  <TableCell>{bill.detail}</TableCell>
-                  <TableCell className="text-right">
-                    {formatCurrency(bill.amount)}
-                  </TableCell>
-                  <TableCell className="text-right pr-0">
-                    <form onSubmit={() => removeBill(bill)}>
-                      <Button
-                        variant={"outline"}
-                        size="icon"
-                        className="gap-1 hover:text-red-500"
-                        type="submit"
-                      >
-                        <XIcon className="h-4 w-4" />
-                      </Button>
-                    </form>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
+            ))}
+          </TableBody>
+        </Table>
       </CardContent>
     </Card>
   );

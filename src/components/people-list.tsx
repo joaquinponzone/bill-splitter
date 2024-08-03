@@ -66,54 +66,52 @@ export default function PeopleList({
       <CardHeader className="flex flex-row items-center">
         <CardTitle>Gentes</CardTitle>
       </CardHeader>
-      <CardContent>
-        <div className="grid gap-2">
-          <form
-            className="flex flex-col lg:flex-row gap-3"
-            onSubmit={handleAddPerson}
-          >
-            <Input
-              placeholder="Agrega nueva gente"
-              id="name"
-              name="name"
-              value={newPerson}
-              onChange={handleInputChange}
-            />
-            <Button className="gap-1 w-full lg:w-fit" type="submit">
-              <p className="lg:hidden ">Agregar</p>
-              <PlusIcon className="h-4 w-4" />
-            </Button>
-          </form>
-          <Table>
-            <TableCaption>Lista de gente para dividir</TableCaption>
-            <TableHeader>
-              <TableRow>
-                {/* <TableHead className="w-[100px]">📋</TableHead> */}
+      <form
+        className="flex flex-col lg:flex-row gap-3 px-4"
+        onSubmit={handleAddPerson}
+      >
+        <Input
+          placeholder="Agrega nueva gente"
+          id="name"
+          name="name"
+          value={newPerson}
+          onChange={handleInputChange}
+        />
+        <Button className="gap-1 w-full lg:w-fit" type="submit">
+          <p className="lg:hidden ">Agregar</p>
+          <PlusIcon className="h-4 w-4" />
+        </Button>
+      </form>
+      <CardContent className="grid gap-8 py-4 lg:py-2">
+        <Table>
+          <TableCaption>Lista de gente para dividir</TableCaption>
+          <TableHeader>
+            <TableRow>
+              {/* <TableHead className="w-[100px]">📋</TableHead> */}
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {people.map((person) => (
+              <TableRow key={person}>
+                <TableCell>
+                  <div className="font-medium">{person}</div>
+                </TableCell>
+                <TableCell className="text-right">
+                  <form onSubmit={() => removePerson(person)}>
+                    <Button
+                      variant={"outline"}
+                      size="icon"
+                      className="gap-1 hover:text-red-500"
+                      type="submit"
+                    >
+                      <XIcon className="h-4 w-4" />
+                    </Button>
+                  </form>
+                </TableCell>
               </TableRow>
-            </TableHeader>
-            <TableBody>
-              {people.map((person) => (
-                <TableRow key={person}>
-                  <TableCell>
-                    <div className="font-medium">{person}</div>
-                  </TableCell>
-                  <TableCell className="text-right">
-                    <form onSubmit={() => removePerson(person)}>
-                      <Button
-                        variant={"outline"}
-                        size="icon"
-                        className="gap-1 hover:text-red-500"
-                        type="submit"
-                      >
-                        <XIcon className="h-4 w-4" />
-                      </Button>
-                    </form>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
+            ))}
+          </TableBody>
+        </Table>
       </CardContent>
     </Card>
   );

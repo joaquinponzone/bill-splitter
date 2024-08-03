@@ -49,7 +49,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-0 md:p-12 3xl:p-24">
-      <section className="flex flex-col lg:flex-row flex-grow w-full gap-2">
+      <section className="flex flex-col lg:flex-row flex-grow w-full md:gap-2">
         <PeopleList handleSyncPeople={handleSyncPeople} />
         <BillsList
           people={dataToSplit.people}
