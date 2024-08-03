@@ -11,6 +11,9 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { MessageCircleWarning } from "lucide-react";
+
 export function ResetSheet({
   handleResetState,
 }: {
@@ -26,8 +29,14 @@ export function ResetSheet({
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Borrón y cuenta nueva</AlertDialogTitle>
+          <Alert variant={"destructive"}>
+            <AlertTitle className="text-neutral-100">Atenti ✋🏼</AlertTitle>
+            <AlertDescription className="text-red-600">
+              Esta acción no se puede deshacer.
+            </AlertDescription>
+          </Alert>
           <AlertDialogDescription>
-            Confirma que querés reiniciar la cuenta
+            Confirma que querés reiniciar las cuentas.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
