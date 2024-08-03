@@ -4,6 +4,8 @@ import { DataToSplit } from "./types";
 
 export async function splitBill(data: DataToSplit) {
   const { people: members, bills: expenses } = data;
+  if (members.length === 0) return null;
+  if (expenses.length === 0) return null;
   // Calculate total expenses for each member
   const totalExpenses: { [key: string]: number } = {};
   expenses.forEach((expense) => {
