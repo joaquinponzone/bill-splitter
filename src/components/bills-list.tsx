@@ -87,7 +87,6 @@ export default function BillsList({
     setBills(newList);
     handleSyncBills(newList);
 
-    // reset form
     setNewBill({
       person: "",
       amount: "",
@@ -124,7 +123,14 @@ export default function BillsList({
           name="person"
           value={newBill.person}
           onChange={handleChangeInput}
+          list="people"
         />
+        {/* autocomplete for persona input base on the gentes list */}
+        <datalist id="people">
+          {people.map((person) => (
+            <option key={person} value={person} />
+          ))}
+        </datalist>
         <Input
           placeholder="Gasto"
           id="detail"
