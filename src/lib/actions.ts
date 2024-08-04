@@ -12,7 +12,7 @@ export async function splitBill(data: DataToSplit) {
     if (!totalExpenses[expense.person]) {
       totalExpenses[expense.person] = 0;
     }
-    totalExpenses[expense.person] += expense.amount;
+    totalExpenses[expense.person] += Number(expense.amount);
   });
 
   // Calculate the total amount spent and the equal share for each member
