@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/alert-dialog";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { MessageCircleWarning } from "lucide-react";
 
 export function ResetSheet({
   handleResetState,

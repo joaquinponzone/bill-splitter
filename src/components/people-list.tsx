@@ -8,7 +8,6 @@ import {
   TableBody,
   TableCaption,
   TableCell,
-  TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
@@ -72,7 +71,7 @@ export default function PeopleList({
       >
         <Input
           placeholder="Agrega nueva gente"
-          id="name"
+          id="enter-person"
           name="name"
           value={newPerson}
           onChange={handleInputChange}
