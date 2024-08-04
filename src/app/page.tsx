@@ -68,13 +68,13 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-0 md:p-12 3xl:p-24">
-      <section className="flex flex-col lg:flex-row flex-grow w-full md:gap-2">
+      <section className="flex flex-col xl:flex-row flex-grow w-full md:gap-2">
         <PeopleList handleSyncPeople={handleSyncPeople} />
         <BillsList
           people={dataToSplit.people}
           handleSyncBills={handleSyncBills}
         />
-        <Card className="w-full lg:max-w-[33%]">
+        <Card className="w-full xl:max-w-[35%] 2xl:max-w-[30%]">
           <CardHeader className="flex flex-row items-center">
             <CardTitle>Resultados</CardTitle>
           </CardHeader>

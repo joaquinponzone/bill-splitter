@@ -15,7 +15,7 @@ import { Button } from "./ui/button";
 import { PlusIcon, XIcon } from "lucide-react";
 import { useToast } from "./ui/use-toast";
 import { formatCurrency } from "@/lib/utils";
-import { Separator } from "./ui/separator";
+import { Bill } from "@/lib/types";
 
 export default function BillsList({
   people,
@@ -25,24 +25,13 @@ export default function BillsList({
   handleSyncBills: (bills: any[]) => void;
 }) {
   const { toast } = useToast();
-  const [bills, setBills] = useState<
-    {
-      person: string;
-      amount: number;
-      detail: string;
-    }[]
-  >([]);
-  const [newBill, setNewBill] = useState<{
-    person: string;
-    amount: string;
-    detail: string;
-  }>({
+  const [bills, setBills] = useState<Bill[]>([]);
+  const [newBill, setNewBill] = useState<Bill>({
     person: "",
-    amount: "",
+    amount: null,
     detail: "",
   });
 
-  // Use useEffect to safely access localStorage on the client side
   useEffect(() => {
     const billsStore = localStorage.getItem("bills");
     setBills(billsStore ? JSON.parse(billsStore) : []);
@@ -52,7 +41,7 @@ export default function BillsList({
     event.preventDefault();
     if (
       newBill.person === "" ||
-      newBill.amount === "" ||
+      newBill.amount === null ||
       Number(newBill.amount) <= 0 ||
       newBill.detail === ""
     ) {
@@ -64,7 +53,6 @@ export default function BillsList({
       return;
     }
 
-    // check if the newBill.person exists in the list
     const validatePersonExist = people.find(
       (person) => person === newBill.person
     );
@@ -89,7 +77,7 @@ export default function BillsList({
 
     setNewBill({
       person: "",
-      amount: "",
+      amount: null,
       detail: "",
     });
   };
@@ -114,7 +102,7 @@ export default function BillsList({
         <CardTitle>Gastos</CardTitle>
       </CardHeader>
       <form
-        className="flex flex-col lg:flex-row gap-3 px-4"
+        className="flex flex-col xl:flex-row gap-3 px-4"
         onSubmit={handleAddBill}
       >
         <Input
@@ -142,15 +130,15 @@ export default function BillsList({
           placeholder="Monto"
           id="amount"
           name="amount"
-          value={newBill.amount}
+          value={Number(newBill.amount)}
           onChange={handleChangeInput}
         />
-        <Button className="gap-1 w-full lg:w-fit" type="submit">
-          <p className="lg:hidden ">Agregar gasto</p>
+        <Button className="gap-1 w-full xl:w-fit" type="submit">
+          <p className="xl:hidden ">Agregar gasto</p>
           <PlusIcon className="h-4 w-4" />
         </Button>
       </form>
-      <CardContent className="grid gap-8 py-4 lg:py-2">
+      <CardContent className="grid gap-8 py-4 xl:py-2">
         <Table>
           <TableCaption>Listado de gastos a dividir.</TableCaption>
           <TableHeader>
@@ -166,7 +154,7 @@ export default function BillsList({
                 <TableCell className="font-medium">{bill.person}</TableCell>
                 <TableCell>{bill.detail}</TableCell>
                 <TableCell className="text-right">
-                  {formatCurrency(bill.amount)}
+                  {formatCurrency(Number(bill.amount))}
                 </TableCell>
                 <TableCell className="text-right pr-0">
                   <form onSubmit={() => removeBill(bill)}>

@@ -1,6 +1,6 @@
 export type Bill = {
   person: string;
-  amount: number;
+  amount: number | null;
   detail: string;
 };
 

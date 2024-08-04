@@ -21,11 +21,9 @@ export default function PeopleList({
   handleSyncPeople: (people: string[]) => void;
 }) {
   const { toast } = useToast();
-
   const [people, setPeople] = useState<string[]>([]);
   const [newPerson, setNewPerson] = useState<string>("");
 
-  // Use useEffect to safely access localStorage on the client side
   useEffect(() => {
     const peopleStore = localStorage.getItem("people");
     setPeople(peopleStore ? JSON.parse(peopleStore) : []);
@@ -61,12 +59,12 @@ export default function PeopleList({
   }
 
   return (
-    <Card className="w-full lg:max-w-[25%]">
+    <Card className="w-full xl:max-w-[25%] 2xl:max-w-[30%]">
       <CardHeader className="flex flex-row items-center">
         <CardTitle>Gentes</CardTitle>
       </CardHeader>
       <form
-        className="flex flex-col lg:flex-row gap-3 px-4"
+        className="flex flex-col xl:flex-row gap-3 px-4"
         onSubmit={handleAddPerson}
       >
         <Input
@@ -76,12 +74,12 @@ export default function PeopleList({
           value={newPerson}
           onChange={handleInputChange}
         />
-        <Button className="gap-1 w-full lg:w-fit" type="submit">
-          <p className="lg:hidden ">Agregar</p>
+        <Button className="gap-1 w-full xl:w-fit" type="submit">
+          <p className="xl:hidden ">Agregar</p>
           <PlusIcon className="h-4 w-4" />
         </Button>
       </form>
-      <CardContent className="grid gap-8 py-4 lg:py-2">
+      <CardContent className="grid gap-8 py-4 xl:py-2">
         <Table>
           <TableCaption>Lista de gente para dividir</TableCaption>
           <TableHeader>
