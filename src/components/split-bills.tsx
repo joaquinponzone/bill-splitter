@@ -72,9 +72,9 @@ export default function SplitBills({
                   className="text-neutral-500 hover:text-neutral-300 grid place-content-center gap-2"
                 >
                   <div className="w-full flex justify-center">
-                    <OctagonAlert size="36" className="text-blue-300/50" />
+                    <OctagonAlert size="36" className="text-destructive" />
                   </div>
-                  No hay datos para calcular, agregá personas y gastos
+                  No hay datos para calcular
                 </Button>
               </a>
             )}
