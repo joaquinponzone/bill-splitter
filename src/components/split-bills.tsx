@@ -39,17 +39,13 @@ export default function SplitBills({
                       key={transaction.from + transaction.to + index}
                       className="flex items-center justify-between gap-2"
                     >
-                      <Badge variant={"outline"} className="text-lg">
-                        {transaction.from}
-                      </Badge>
-                      <span>👉</span>
-                      <Badge variant={"outline"} className="text-lg">
-                        {transaction.to}
-                      </Badge>
-                      <span>💸</span>
-                      <Badge variant={"secondary"} className="text-lg">
+                      <span className="text-lg">{transaction.from}</span>
+                      <span>⇨</span>
+                      <Badge variant={"secondary"} className="text-base p-1">
                         {formatCurrency(Number(transaction.amount.toFixed(2)))}
                       </Badge>
+                      <span>⇒</span>
+                      <span className="text-lg">{transaction.to}</span>
                     </li>
                     {index !== results.transactions.length - 1 && (
                       <Separator className="my-2" />

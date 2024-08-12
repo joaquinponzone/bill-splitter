@@ -67,7 +67,7 @@ export default function Home() {
   }, [dataToSplit]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-0 md:p-12 3xl:p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between p-0 md:p-12 3xl:p-24 w-full">
       <section className="flex flex-col xl:flex-row flex-grow w-full md:gap-2">
         <PeopleList handleSyncPeople={handleSyncPeople} />
         <BillsList
