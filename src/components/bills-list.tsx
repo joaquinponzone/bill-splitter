@@ -47,7 +47,7 @@ export default function BillsList({
     ) {
       toast({
         title: "Faltan datos!",
-        description: "Completa los tres campos para cargar un nuevo gasto.",
+        description: "Completa todos los campos para cargar un nuevo gasto.",
         variant: "destructive",
       });
       return;
@@ -97,7 +97,7 @@ export default function BillsList({
   };
 
   return (
-    <Card className="w-full">
+    <Card className="border-none md:border md:rounded-lg w-full">
       <CardHeader>
         <CardTitle>Gastos</CardTitle>
       </CardHeader>
@@ -150,10 +150,12 @@ export default function BillsList({
           </TableHeader>
           <TableBody>
             {bills.map((bill, index) => (
-              <TableRow key={bill.person + index}>
-                <TableCell className="font-medium">{bill.person}</TableCell>
-                <TableCell>{bill.detail}</TableCell>
-                <TableCell className="text-right">
+              <TableRow key={bill.person + index} className="font-mono">
+                <TableCell className="font-bold text-green-500">
+                  {bill.person}
+                </TableCell>
+                <TableCell className="font-light">{bill.detail}</TableCell>
+                <TableCell className="font-bold text-right">
                   {formatCurrency(Number(bill.amount))}
                 </TableCell>
                 <TableCell className="text-right pr-0">

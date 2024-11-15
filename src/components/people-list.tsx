@@ -59,16 +59,16 @@ export default function PeopleList({
   }
 
   return (
-    <Card className="w-full xl:max-w-[25%] 2xl:max-w-[30%]">
+    <Card className="border-none md:border md:rounded-lg w-full xl:max-w-[25%] 2xl:max-w-[30%]">
       <CardHeader className="flex flex-row items-center">
-        <CardTitle>Gentes</CardTitle>
+        <CardTitle>Personas</CardTitle>
       </CardHeader>
       <form
         className="flex flex-col xl:flex-row gap-3 px-4"
         onSubmit={handleAddPerson}
       >
         <Input
-          placeholder="Agrega nueva gente"
+          placeholder="Agrega nueva persona"
           id="enter-person"
           name="name"
           value={newPerson}
@@ -81,7 +81,7 @@ export default function PeopleList({
       </form>
       <CardContent className="grid gap-8 py-4 xl:py-2">
         <Table>
-          <TableCaption>Lista de gente para dividir</TableCaption>
+          <TableCaption>Lista de personas para dividir</TableCaption>
           <TableHeader>
             <TableRow>
               {/* <TableHead className="w-[100px]">📋</TableHead> */}

@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <>
       <Separator className="my-1 w-1/2" />
-      <footer className="p-4 text-center text-sm text-gray-500">
+      <footer className="p-4 text-center text-sm text-gray-500 py-8">
         <p>
           Hecho con ♥️ por{" "}
           <a

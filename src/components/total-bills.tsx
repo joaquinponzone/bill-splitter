@@ -19,7 +19,7 @@ export default function TotalBills({ data }: { data: any }) {
 
   return (
     <div className="grid gap-4">
-      <Card>
+      <Card className="border-none md:border md:rounded-lg">
         <CardHeader className="pb-2">
           <CardDescription>Total</CardDescription>
           <CardTitle className="text-4xl">{formatCurrency(total)}</CardTitle>

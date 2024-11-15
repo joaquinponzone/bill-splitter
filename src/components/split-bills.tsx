@@ -23,12 +23,12 @@ export default function SplitBills({
   return (
     <>
       <Separator className="my-4" />
-      <Card className="grid gap-3 justify-center p-0">
+      <Card className="border-none md:border md:rounded-lg  grid gap-3 justify-center p-0">
         <CardHeader>
           <CardTitle className="text-center">Ajustes</CardTitle>
         </CardHeader>
         <CardContent>
-          <ul className="grid gap-3">
+          <ul className="grid gap-3 text-4xl sm:text-base">
             {Number(results?.totalAmountSpent) > 0 ? (
               results?.transactions.length ? (
                 results?.transactions.map((transaction, index) => (

@@ -74,7 +74,7 @@ export default function Home() {
           people={dataToSplit.people}
           handleSyncBills={handleSyncBills}
         />
-        <Card className="w-full xl:max-w-[35%] 2xl:max-w-[30%]">
+        <Card className="border-none md:border md:rounded-lg w-full xl:max-w-[35%] 2xl:max-w-[30%]">
           <CardHeader className="flex flex-row items-center">
             <CardTitle>Resultados</CardTitle>
           </CardHeader>
@@ -86,7 +86,7 @@ export default function Home() {
           <CardFooter></CardFooter>
         </Card>
       </section>
-      <section className="p-4">
+      <section className="p-4 w-full flex justify-center">
         <ResetSheet handleResetState={handleResetState} />
       </section>
       <Footer />
